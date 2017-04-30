@@ -19,7 +19,7 @@ import Order from '../pages/Order';
 import My from '../pages/My';
 
 export default class TabView extends Component{
-    constructor(pros){
+    constructor(props){
         super(props);
         this.state={
             currentTab:'HomePage',
@@ -63,7 +63,9 @@ export default class TabView extends Component{
                             title={item[0]}
                             selected={this.state.currentTab===item[2]}
                             selectedTitleStyle={{color:'#3496f0'}}
-                            {/*renderIcon={()=>}*/}
+                            renderIcon={()=><Icon name={item[1]} size={px2dp(22)} color="#666" />}
+                            renderSelectedIcon={()=><Icon name={item[1].replace(/\-outline$/,'')} size={px2dp(22)} color="#3496f0" />}
+                            onPress={()=>this.setState({currentTab:item[2]})}
                         >
                             {item[3]}
                         </TabNavigator.Item>
@@ -76,5 +78,19 @@ export default class TabView extends Component{
 
 }
 
+const styles=StyleSheet.create({
+    tabbar:{
+        height:px2dp(46),
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor:'#fff'
+    },
+    hide:{
+        transform:[{translateX:width}]
+    },
+    tabStyle:{
+        padding:px2dp(4)
+    }
 
+})
 

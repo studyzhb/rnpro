@@ -1,6 +1,6 @@
 'use strict';
 
-import React,{component} from 'react';
+import React,{Component} from 'react';
 import Navigation from './app';
 import {View,Platform} from 'react-native';
 
