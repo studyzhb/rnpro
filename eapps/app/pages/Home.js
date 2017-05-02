@@ -24,9 +24,9 @@ import {
 import px2dp from '../util/px2dp';
 import Icon from 'react-native-vector-icons/Ionicons';
 //import Swiper from 'react-native-swiper';
-import SplashScreen from 'react-native-splash-screen';
+//import SplashScreen from 'react-native-splash-screen';
 
-//import SearchView from '../component/SearchView';
+import SearchView from '../component/SearchView';
 //import LbsModal from '../component/LbsModal';
 import TabView from '../component/TabView';
 //import Bz from '../component/Bz';
@@ -64,7 +64,11 @@ export default class Home extends Component{
     _onRefresh(){
         
     }
+    _renderHeader(){
+
+    }
     render(){
+        console.log(this.state.searchView);
         return (
             <View style={{flex:1,backgroundColor:'#f3f3f3'}}>
                 <ScrollView
@@ -84,8 +88,11 @@ export default class Home extends Component{
                         />
                     }
                 >
-                
-
+                {this._renderHeader()}
+                <SearchView show={this.state.searchView} scrollY={this.state.scrollY} />
+                <View >
+                    <Text>{'测试首页'}</Text>
+                </View>
                 </ScrollView>
             </View>
         )
