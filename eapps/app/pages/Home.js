@@ -65,7 +65,22 @@ export default class Home extends Component{
         
     }
     _renderHeader(){
-
+        let searchY=this.state.scrollY.interpolate({
+            inputRange:[0,this.SEARCH_BOX_Y,this.SEARCH_FIX_Y,this.SEARCH_FIX_Y],
+            outputRange:[0,0,this.SEARCH_DIFF_Y,this.SEARCH_DIFF_Y]
+        })
+        let lbsOpacity=this.state.scrollY.interpolate({
+            inputRange:[0,this.SEARCH_BOX_Y],
+            outputRange:[1,0]
+        })
+        let keyOpacity=this.state.scrollY.interpolate({
+            inputRange:[0,this.SEARCH_BOX_Y,this.SEARCH_KEY_P],
+            outputRange:[1,1,0]
+        })
+        
+    }
+    _renderTypes(){
+        
     }
     render(){
         console.log(this.state.searchView);
@@ -89,6 +104,14 @@ export default class Home extends Component{
                     }
                 >
                 {this._renderHeader()}
+                <View style={{backgroundColor:'#fff',paddingBottom:10}}>
+                    {this._renderTypes()}
+                    <TouchableOpacity>
+                        <View style={{height:px2dp(90),paddingHorizontal:10}}>  
+                            <Image style={{height:px2dp(90),width:width-20,resizeMode:'cover'}} />
+                        </View>
+                    </TouchableOpacity>
+                </View>
                 <SearchView show={this.state.searchView} scrollY={this.state.scrollY} />
                 <View >
                     <Text>{'测试首页'}</Text>
